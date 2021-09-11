@@ -25,7 +25,7 @@ int Partition(vector<int>& values, int low, int high)
         while (values[high] > pivotValue) {
             high--;
         }
-        
+
         // If the low value is less than or equal to the high value swap them by reference
         if (low <= high) {
             tmp = values[low];
@@ -49,7 +49,7 @@ int Partition(vector<int>& values, int low, int high)
     - https://codereview.stackexchange.com/questions/189103/quick-sort-on-c-vector
     - http://www.danielkoitzsch.de/blog/2016/11/18/quicksort-implementation-in-c/
 */
-void QuickSort(vector<int>& myVec, int low, int high)
+void QuickSort(vector<int>& values, int low, int high)
 {
     // Make sure that low and high are natural numbers otherwise
     // you risk an out of bounds error (although vectors have some safeguards arrays do not)
@@ -57,26 +57,26 @@ void QuickSort(vector<int>& myVec, int low, int high)
 
         // if the low end is less than the high end run the parition scheme on it and then quicksort it
         if (low < high) {
-            int pivotIndex = Partition(myVec, low, high);
-            QuickSort(myVec, low, pivotIndex - 1);
-            QuickSort(myVec, pivotIndex, high);
+            int pivotIndex = Partition(values, low, high);
+            QuickSort(values, low, pivotIndex - 1);
+            QuickSort(values, pivotIndex, high);
         }
     }
 }
 
 // This function acts as a stub to expand the arguments needed for my QuickSort implementation
-void SortVector(vector<int>& myVec)
+void SortVector(vector<int>& values)
 {
     // Set the beginning of the vector as low and the end as high.
-    QuickSort(myVec, 0, myVec.size() - 1);
+    QuickSort(values, 0, values.size() - 1);
 }
 
 int main() {
-    vector<int> myVecs = { 5, 7, 1, 5, 2, 7, 5, 4, 1, 2, 9, 6, 11};
-    SortVector(myVecs);
+    vector<int> values = { 5, 7, 1, 5, 2, 7, 5, 4, 1, 2, 9, 6, 11 };
+    SortVector(values);
 
-    for (int i = 0; i < myVecs.size(); i++) {
-        cout << myVecs.at(i) << " ";
+    for (int i = 0; i < values.size(); i++) {
+        cout << values.at(i) << " ";
     }
 
     cout << endl;
